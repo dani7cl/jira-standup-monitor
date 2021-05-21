@@ -1,0 +1,19 @@
+body {
+    margin: 10px;
+    white-space: nowrap;
+}
+
+h1 {
+    font-size: 15px;
+}
+
+#container {
+    margin-right: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#container span {
+    margin-right: 10px;
+}
