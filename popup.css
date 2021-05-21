@@ -1,6 +1,7 @@
 body {
     margin: 10px;
     white-space: nowrap;
+    text-align: center;
 }
 
 h1 {
@@ -13,6 +14,29 @@ h1 {
     width: 300px;
 }
 
+.subtitle {
+    margin-bottom: 10px;
+}
+
 #show-results {
     display: none;
+}
+
+button {
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 10px;
+}
+
+#next {
+    background-color: green;
+}
+
+#clear {
+    background-color: red;
+}
+
+#show-results {
+    background-color: blue; 
 }

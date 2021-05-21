@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
         showResultsButton.style = "display: initial"
         nextButton.style = "display: none"
       }
-    });  });
+    });  
+  });
 
   clearButton.addEventListener('click', () => {
     runFunction(clearData)
