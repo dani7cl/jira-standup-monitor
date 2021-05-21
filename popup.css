@@ -8,12 +8,11 @@ h1 {
 }
 
 #container {
-    margin-right: 10px;
-    align-items: center;
     display: flex;
     justify-content: space-between;
+    width: 300px;
 }
 
-#container span {
-    margin-right: 10px;
+#show-results {
+    display: none;
 }
