@@ -1,42 +1,48 @@
 body {
-    margin: 10px;
-    white-space: nowrap;
-    text-align: center;
+  margin: 10px;
+  white-space: nowrap;
+  text-align: center;
 }
 
 h1 {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 #container {
-    display: flex;
-    justify-content: space-between;
-    width: 300px;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
 }
 
 .subtitle {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #show-results {
-    display: none;
+  display: none;
 }
 
 button {
-    color: white;
-    border-radius: 10px;
-    border: none;
-    padding: 5px 10px;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 100px;
+}
+
+button:active {
+  opacity: 0.5;
 }
 
 #next {
-    background-color: green;
+  background-color: green;
 }
 
 #clear {
-    background-color: red;
+  background-color: red;
 }
 
 #show-results {
-    background-color: blue; 
+  background-color: blue;
 }
