@@ -1,6 +1,14 @@
 # Jira Standupizer
 Ramondly decides who's next on standups
 
+## Installation
+- Clone the repository
+- Go to chrome://extensions/
+- Click on the "Load unpacked" button on the top left and choose the folder where of the cloned repository
+- (Optional) Pin the extension for easy access
+
+That's it, you are ready to use it :)
+
 ## User Guide
  - Go to https://dev-jira.dynatrace.org/secure/RapidBoard.jspa
  - Check all the team members are on a quick filter label and none is selected.
