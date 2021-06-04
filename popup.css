@@ -63,3 +63,8 @@ button:active {
   background-color: blue;
   width: 100px;
 }
+
+#speaker {
+  visibility: hidden;
+  margin: 10px;
+}
