@@ -35,14 +35,21 @@ button:active {
   opacity: 0.5;
 }
 
+#start {
+  background-color: blue;
+}
+
 #next {
+  display: none;
   background-color: green;
 }
 
 #clear {
+  display: none;
   background-color: red;
 }
 
 #show-results {
+  display: none;
   background-color: blue;
 }
