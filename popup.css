@@ -28,7 +28,7 @@ button {
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-  width: 100px;
+  width: 80px;
 }
 
 button:active {
@@ -39,9 +39,18 @@ button:active {
   background-color: blue;
 }
 
-#next {
+#advance-buttons-container {
   display: none;
+}
+
+#next {
   background-color: green;
+}
+
+#skip {
+  border: 1px solid green;
+  color: green;
+  width: 60px;
 }
 
 #clear {
@@ -52,4 +61,5 @@ button:active {
 #show-results {
   display: none;
   background-color: blue;
+  width: 100px;
 }
