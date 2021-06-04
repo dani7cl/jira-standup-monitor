@@ -3,7 +3,7 @@ let speaker, advanceButtonsContainer, startButton, nextButton, skipButton, clear
 function setSpeaker() {
   setTimeout(() => {
     chrome.storage.sync.get(['index', 'randomRange'], ({ index, randomRange }) => {
-      if (randomRange[randomRange.length - 1].endTime) {
+      if (index === 0 || randomRange[randomRange.length - 1].endTime) {
         speaker.style = 'visibility: hidden'
       } else {
         speaker.style = 'visibility: visible'
