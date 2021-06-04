@@ -11,10 +11,13 @@
     "content_scripts": [
       {
         "matches": ["https://dev-jira.dynatrace.org/secure/RapidBoard.jspa"],
-        "js": ["main.js"]
+        "js": ["main.js"],
+        "css": ["main.css"]
       }
     ],
-
+    "web_accessible_resources": [
+      "main.css"
+    ],
     "permissions": [
       "activeTab",
       "storage",

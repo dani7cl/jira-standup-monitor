@@ -64,12 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
   nextButton.addEventListener('click', () => {
     runFunction(unselectPreviousSpeakers)
     runFunction(selectNextSpeaker)
+
     chrome.storage.sync.get(['index', 'randomRange'], ({ index, randomRange }) => {
       if (randomRange && index === randomRange.length) {
         showResultsState()
-      }
-      if (!randomRange || index === 0) {
-        showAdvanceState()
       }
     })
     setSpeaker()

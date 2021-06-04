@@ -1,0 +1,35 @@
+.jira-standupizer-panel {
+  background-color: lightgray;
+  width: 600px;
+  display: block;
+  position: fixed;
+  z-index: 900;
+  left: 50%;
+  top: 10%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  box-shadow: 0px 5px 15px 5px;
+  border-radius: 20px;
+}
+
+.jira-standupizer-inner-panel {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  font-size: 20px;
+  width: 100%;
+}
+
+.jira-standupizer-title {
+  text-align: center;
+  margin: 30px;
+  font-size: 40px;
+}
+
+.jira-standupizer-speaker-row {
+  border-bottom: 1px solid;
+  display: flex;
+  padding: 5px;
+  margin: 0 40px;
+}
