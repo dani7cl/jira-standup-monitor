@@ -11,7 +11,7 @@ h1 {
 #container {
   display: flex;
   justify-content: space-between;
-  width: 300px;
+  width: 400px;
 }
 
 .subtitle {
@@ -50,6 +50,12 @@ button:hover {
 
 #next {
   background-color: green;
+}
+
+#pospone {
+  border: 1px solid green;
+  color: green;
+  width: 80px;
 }
 
 #skip {

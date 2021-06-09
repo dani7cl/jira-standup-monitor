@@ -1,4 +1,4 @@
-let speaker, advanceButtonsContainer, startButton, nextButton, skipButton, clearButton, showResultsButton
+let speaker, advanceButtonsContainer, startButton, nextButton, posponeButton, clearButton, showResultsButton, skipButton
 
 function setSpeaker() {
   setTimeout(() => {
@@ -10,7 +10,7 @@ function setSpeaker() {
         speaker.innerHTML = `${randomRange[index - 1].name}'s turn (Speaker n&ordm${index})`
       }
     })
-  }, 100)
+  }, 200)
 }
 
 function showAdvanceState() {
@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   advanceButtonsContainer = document.getElementById('advance-buttons-container')
   startButton = document.getElementById('start')
   nextButton = document.getElementById('next')
+  posponeButton = document.getElementById('pospone')
   skipButton = document.getElementById('skip')
   clearButton = document.getElementById('clear')
   showResultsButton = document.getElementById('show-results')
@@ -70,6 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
         showResultsState()
       }
     })
+    setSpeaker()
+  })
+
+  posponeButton.addEventListener('click', () => {
+    runFunction(unselectPreviousSpeakers)
+    runFunction(posponeCurrentSpeaker)
     setSpeaker()
   })
 
