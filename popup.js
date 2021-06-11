@@ -1,17 +1,5 @@
-let speaker, advanceButtonsContainer, startButton, nextButton, posponeButton, clearButton, showResultsButton, skipButton
-
-function setSpeaker() {
-  setTimeout(() => {
-    chrome.storage.sync.get(['index', 'randomRange'], ({ index, randomRange }) => {
-      if (index === 0 || randomRange[randomRange.length - 1].endTime) {
-        speaker.style = 'visibility: hidden'
-      } else {
-        speaker.style = 'visibility: visible'
-        speaker.innerHTML = `${randomRange[index - 1].name}'s turn (Speaker n&ordm${index})`
-      }
-    })
-  }, 200)
-}
+const BUTTON_DEBOUNCE_MS = 300;
+let advanceButtonsContainer, startButton, nextButton, posponeButton, clearButton, showResultsButton, skipButton, timer
 
 function showAdvanceState() {
   startButton.style = 'display: none'
@@ -31,11 +19,45 @@ function showEmptyInitialState() {
   advanceButtonsContainer.style = 'display: none'
   showResultsButton.style = 'display: none'
   clearButton.style = 'display: none'
-  speaker.style = 'visibility: hidden'
+}
+
+function nextButtonClicked() {
+  runFunction(unselectPreviousSpeakers)
+  runFunction(selectNextSpeaker, 100)
+
+  chrome.storage.sync.get(['index', 'randomRange'], ({ index, randomRange }) => {
+    if (randomRange && index === randomRange.length) {
+      showResultsState()
+    }
+  })
+}
+
+function skipButtonClicked() {
+  runFunction(unselectPreviousSpeakers)
+  runFunction(skipCurrentSpeaker, 100)
+}
+
+function posponeButtonClicked() {
+  runFunction(unselectPreviousSpeakers)
+  runFunction(posponeCurrentSpeaker, 100)
+}
+
+function startButtonClicked() {
+  runFunction(unselectPreviousSpeakers)
+  runFunction(selectNextSpeaker, 100)
+
+  showAdvanceState()
+}
+
+function buttonClicked(callback) {
+  if(timer) {
+    clearTimeout(timer)
+  }
+
+  timer = setTimeout(callback, BUTTON_DEBOUNCE_MS)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  speaker = document.getElementById('speaker')
   advanceButtonsContainer = document.getElementById('advance-buttons-container')
   startButton = document.getElementById('start')
   nextButton = document.getElementById('next')
@@ -52,43 +74,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  setSpeaker()
-
   startButton.addEventListener('click', () => {
-    runFunction(unselectPreviousSpeakers)
-    runFunction(selectNextSpeaker)
-
-    showAdvanceState()
-    setSpeaker()
+    buttonClicked(startButtonClicked)
   })
 
   nextButton.addEventListener('click', () => {
-    runFunction(unselectPreviousSpeakers)
-    runFunction(selectNextSpeaker)
-
-    chrome.storage.sync.get(['index', 'randomRange'], ({ index, randomRange }) => {
-      if (randomRange && index === randomRange.length) {
-        showResultsState()
-      }
-    })
-    setSpeaker()
+    buttonClicked(nextButtonClicked)
   })
 
   posponeButton.addEventListener('click', () => {
-    runFunction(unselectPreviousSpeakers)
-    runFunction(posponeCurrentSpeaker)
-    setSpeaker()
+    buttonClicked(posponeButtonClicked)
   })
 
   skipButton.addEventListener('click', () => {
-    runFunction(unselectPreviousSpeakers)
-    runFunction(skipCurrentSpeaker)
-    setSpeaker()
+    buttonClicked(skipButtonClicked)
   })
 
   clearButton.addEventListener('click', () => {
     runFunction(unselectPreviousSpeakers)
-    runFunction(clearData)
+    runFunction(clearData, 100)
     showEmptyInitialState()
   })
 
