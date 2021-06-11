@@ -2,6 +2,7 @@
 ## VERSION 1.1.2 - 11/06/2021
 - (bugfix) Add debounces to buttons
 - (bugfix) Check speaker has been selected before moving to the next one
+- (bugfix) Show results responsiveness improved
 ## VERSION 1.1.1 - 09/06/2021
 - (feature) New skip button to ignore the speaker
 
