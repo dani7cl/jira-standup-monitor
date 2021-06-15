@@ -21,20 +21,24 @@ function showEmptyInitialState() {
   clearButton.style = 'display: none'
 }
 
-function nextButtonClicked() {
-  runFunction(unselectPreviousSpeakers)
-  runFunction(selectNextSpeaker, 100)
-
+function showResultsIfNoSpeakersLeft() {
   chrome.storage.sync.get(['index', 'randomRange'], ({ index, randomRange }) => {
-    if (randomRange && index === randomRange.length) {
+    if (randomRange && index >= randomRange.length) {
       showResultsState()
     }
   })
 }
 
+function nextButtonClicked() {
+  runFunction(unselectPreviousSpeakers)
+  runFunction(selectNextSpeaker, 100)
+  showResultsIfNoSpeakersLeft();
+}
+
 function skipButtonClicked() {
   runFunction(unselectPreviousSpeakers)
   runFunction(skipCurrentSpeaker, 100)
+  showResultsIfNoSpeakersLeft();
 }
 
 function posponeButtonClicked() {
@@ -67,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   showResultsButton = document.getElementById('show-results')
 
   chrome.storage.sync.get(['index', 'randomRange'], ({ index, randomRange }) => {
-    if (randomRange && index === randomRange.length) {
+    if (randomRange && index >= randomRange.length) {
       showResultsState()
     } else if (index > 0) {
       showAdvanceState()
