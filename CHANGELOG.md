@@ -1,4 +1,8 @@
 # CHANGELOG
+## VERSION 1.1.4 - 16/06/2021
+- (bugfix) Remove duplicate speakers when JIRA(2nd fix)
+- (feature) Sort speakers by time
+  
 ## VERSION 1.1.3 - 11/06/2021
 - (bugfix) Remove duplicate speakers when JIRA has the elements twice on the DOM
 - (bugfix) Skipping the last speaker

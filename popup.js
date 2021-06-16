@@ -31,24 +31,24 @@ function showResultsIfNoSpeakersLeft() {
 
 function nextButtonClicked() {
   runFunction(unselectPreviousSpeakers)
-  runFunction(selectNextSpeaker, 100)
+  runFunction(selectNextSpeaker, getSpeakerLabels, 100)
   showResultsIfNoSpeakersLeft();
 }
 
 function skipButtonClicked() {
   runFunction(unselectPreviousSpeakers)
-  runFunction(skipCurrentSpeaker, 100)
+  runFunction(skipCurrentSpeaker, getSpeakerLabels, 100)
   showResultsIfNoSpeakersLeft();
 }
 
 function posponeButtonClicked() {
   runFunction(unselectPreviousSpeakers)
-  runFunction(posponeCurrentSpeaker, 100)
+  runFunction(posponeCurrentSpeaker, getSpeakerLabels, 100)
 }
 
 function startButtonClicked() {
   runFunction(unselectPreviousSpeakers)
-  runFunction(selectNextSpeaker, 100)
+  runFunction(selectNextSpeaker, getSpeakerLabels, 100)
 
   showAdvanceState()
 }
