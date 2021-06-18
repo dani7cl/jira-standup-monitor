@@ -15,12 +15,12 @@ That's it, you are ready to use it :)
 
 ## User Guide
  - Go to https://dev-jira.dynatrace.org/secure/RapidBoard.jspa
- - Check all the team members are on a quick filter label and none is selected.
+ - Check all the team members are on a quick filter label
  - Open the extension.
- - Click the next button and let the randomly selected user talk.
+ - Click Start or next button to randomly select the following speaker.
  - Repeat the process until everyone talked and the "Show results" button is visible.
- - Click on "Show results" to see the times spent for everyone.
- - Finally, you can click "Clear data" to reset everything so you can start again.
+ - Click "Show results" to see the times spent for everyone.
+ - Click "Clear data" to reset everything so you can start again.
 
 <img src="images/highlights.png" alt="highlights" height="400"/>
 
