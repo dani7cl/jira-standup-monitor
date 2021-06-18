@@ -1,4 +1,4 @@
-# Jira Standupizer <img src="ramondly.png" alt="logo" width="70"/>
+# Jira Standup Monitor <img src="ramondly.png" alt="logo" width="70"/>
 
 Ramondly decides who's next on standups
 

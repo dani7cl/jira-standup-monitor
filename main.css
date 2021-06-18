@@ -1,4 +1,4 @@
-.jira-standupizer-panel {
+.jira-standup-panel {
   position: fixed;
   top: 0;
   right: 0;
@@ -7,7 +7,7 @@
   z-index: 900;
 }
 
-.jira-standupizer-panel-content {
+.jira-standup-panel-content {
   background-color: #f8f8f8;
   width: 600px;
   display: block;
@@ -19,7 +19,7 @@
   border-radius: 20px;
 }
 
-.jira-standupizer-panel::before {
+.jira-standup-panel::before {
   content: '';
   position: fixed;
   top: 0;
@@ -30,30 +30,30 @@
   opacity: 0.3;
 }
 
-.jira-standupizer-inner-panel {
+.jira-standup-inner-panel {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 20px;
   width: 100%;
 }
 
-.jira-standupizer-title {
+.jira-standup-title {
   text-align: center;
   margin: 20px !important;
   font-size: 40px;
   text-decoration: underline;
 }
 
-.jira-standupizer-speaker-row {
+.jira-standup-speaker-row {
   border: none;
   display: flex;
   padding: 5px;
   margin: 0 40px;
 }
 
-.jira-standupizer-speaker-row:nth-child(2n) {
+.jira-standup-speaker-row:nth-child(2n) {
   background: #f8f8f8;
 }
-.jira-standupizer-speaker-row:nth-child(2n + 1) {
+.jira-standup-speaker-row:nth-child(2n + 1) {
   background: #f2f2f2;
 }
