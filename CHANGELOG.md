@@ -1,4 +1,7 @@
 # CHANGELOG
+## VERSION 1.2 - 02/07/2021
+- (feature) Add confetti, medals and other animations
+
 ## VERSION 1.1.4 - 16/06/2021
 - (bugfix) Remove duplicate speakers when JIRA(2nd fix)
 - (feature) Sort speakers by time

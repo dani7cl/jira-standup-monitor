@@ -17,6 +17,16 @@
   transform: translate(-50%, -50%);
   box-shadow: 0px 5px 15px 5px #f4f4f4;
   border-radius: 20px;
+  animation: scaleAnimation linear 0.5s forwards;
+}
+
+@keyframes scaleAnimation {
+  from {
+    transform: translate(-50%, -50%) scale(1.1);
+  } 
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .jira-standup-panel::before {
@@ -27,7 +37,17 @@
   left: 0;
   bottom: 0;
   background: black;
-  opacity: 0.3;
+  opacity: 0.6;
+  animation: opacityAnimation linear 0.5s forwards;
+}
+
+@keyframes opacityAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.6;
+  }
 }
 
 .jira-standup-inner-panel {
@@ -49,6 +69,24 @@
   display: flex;
   padding: 5px;
   margin: 0 40px;
+  position: relative;
+}
+
+.jira-standup-speaker-row::after {
+  position: absolute;
+  left: -24px;
+}
+
+.jira-standup-speaker-row:nth-child(1)::after {
+  content: url('/images/gold.png');
+}
+
+.jira-standup-speaker-row:nth-child(2)::after {
+  content: url('/images/silver.png');
+}
+
+.jira-standup-speaker-row:nth-child(3)::after {
+  content: url('/images/copper.png');
 }
 
 .jira-standup-speaker-row:nth-child(2n) {
