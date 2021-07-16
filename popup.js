@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
       selectPreviousSpeaker,
       postponeCurrentSpeaker,
       getSpeakerLabels,
-      showHighlights
+      showHighlights,
+      setFinalPlayerState
     ])
     window.close()
   })

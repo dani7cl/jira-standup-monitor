@@ -130,7 +130,13 @@
   background: red;
 }
 @-webkit-keyframes makeItRain {
-  from {opacity: 0;}
-  50% {opacity: 1;}
-  to {-webkit-transform: translateY(350px);}
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: translateY(350px);
+  }
 }

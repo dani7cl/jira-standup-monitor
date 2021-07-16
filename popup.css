@@ -37,10 +37,11 @@ button:hover {
 }
 
 #show-player {
-  background-color: #4eb5f1;
+  background-color: #3572b0;
   width: 100px;
 }
 
 #clear {
   background-color: #f14e4e;
+  width: 100px;
 }
