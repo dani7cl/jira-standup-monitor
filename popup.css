@@ -18,10 +18,6 @@ h1 {
   margin-bottom: 10px;
 }
 
-#show-results {
-  display: none;
-}
-
 button {
   color: white;
   border-radius: 10px;
@@ -40,42 +36,11 @@ button:hover {
   opacity: 0.8;
 }
 
-#start {
-  background-color: #4eb5f1;
-}
-
-#advance-buttons-container {
-  display: none;
-}
-
-#next {
-  background-color: green;
-}
-
-#pospone {
-  border: 1px solid green;
-  color: green;
-  width: 80px;
-}
-
-#skip {
-  border: 1px solid green;
-  color: green;
-  width: 60px;
-}
-
-#clear {
-  display: none;
-  background-color: #f14e4e;
-}
-
-#show-results {
-  display: none;
+#show-player {
   background-color: #4eb5f1;
   width: 100px;
 }
 
-#speaker {
-  visibility: hidden;
-  margin: 10px;
+#clear {
+  background-color: #f14e4e;
 }

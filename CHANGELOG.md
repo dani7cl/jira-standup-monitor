@@ -1,4 +1,8 @@
 # CHANGELOG
+## VERSION 2.0 - 16/07/2021
+- (feature) Integared player on JIRA
+- (feature) Go Back button
+
 ## VERSION 1.2 - 02/07/2021
 - (feature) Add confetti, medals and other animations
 
