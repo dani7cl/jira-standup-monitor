@@ -17,10 +17,9 @@ That's it, you are ready to use it :)
  - Go to https://dev-jira.dynatrace.org/secure/RapidBoard.jspa
  - Check all the team members are on a quick filter label
  - Open the extension.
- - Click Start or next button to randomly select the following speaker.
- - Repeat the process until everyone talked and the "Show results" button is visible.
- - Click "Show results" to see the times spent for everyone.
- - Click "Clear data" to reset everything so you can start again.
+ - Click "Show player" to display the player on top of the JIRA board.
+ - A player with the functions (postpone, previous, start/show results, next, skip) will appear
+ - At any moment, you can click on "Clear data" to reset everything so you can start again.
 
 <img src="images/highlights.png" alt="highlights" height="400"/>
 
