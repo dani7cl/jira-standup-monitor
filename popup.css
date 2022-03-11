@@ -24,7 +24,7 @@ button {
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-  width: 80px;
+  background-color: #3572b0;
 }
 
 button:active {
@@ -38,10 +38,20 @@ button:hover {
 
 #show-player {
   background-color: #3572b0;
-  width: 100px;
 }
 
 #clear {
   background-color: #f14e4e;
-  width: 100px;
+}
+
+#go-back {
+  background-color: #f14e4e;
+}
+
+#show-extractor {
+  background-color: #7a3;
+}
+
+#extractor-view {
+  display: none;
 }

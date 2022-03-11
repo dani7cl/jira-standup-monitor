@@ -1,4 +1,15 @@
-let showPlayerButton, clearButton, timer
+let showPlayerButton,
+  clearButton,
+  extractorButton,
+  timer,
+  mainView,
+  extractorView,
+  goBackButton,
+  copyBackportsButton,
+  copyFeaturesButton,
+  copyTitleButton,
+  copyResearchesButton,
+  sprintName
 
 function showPlayerButtonClicked() {
   runFunction(showPlayer)
@@ -7,7 +18,18 @@ function showPlayerButtonClicked() {
 document.addEventListener('DOMContentLoaded', () => {
   showPlayerButton = document.getElementById('show-player')
   clearButton = document.getElementById('clear')
+  extractorButton = document.getElementById('show-extractor')
+  mainView = document.getElementById('main-view')
+  extractorView = document.getElementById('extractor-view')
 
+  goBackButton = document.getElementById('go-back')
+  copyBackportsButton = document.getElementById('copy-backports')
+  copyTitleButton = document.getElementById('copy-title')
+  copyFeaturesButton = document.getElementById('copy-features')
+  copyResearchesButton = document.getElementById('copy-researches')
+  sprintName = document.getElementById('sprint-name')
+
+  // Main View
   showPlayerButton.addEventListener('click', () => {
     runFunction(showPlayer, [
       unselectPreviousSpeakers,
@@ -22,8 +44,71 @@ document.addEventListener('DOMContentLoaded', () => {
     window.close()
   })
 
+  extractorButton.addEventListener('click', () => {
+    mainView.style.display = 'none'
+    extractorView.style.display = 'initial'
+  })
+
   clearButton.addEventListener('click', () => {
     runFunction(unselectPreviousSpeakers)
     runFunction(clearData)
+  })
+
+  // Extractor
+  goBackButton.addEventListener('click', () => {
+    extractorView.style.display = 'none'
+    mainView.style.display = 'initial'
+  })
+
+  copyResearchesButton.addEventListener('click', () => {
+    runFunction(
+      copyResearches,
+      [getTasks, formatTask],
+      0,
+      (text) => {
+        navigator.clipboard.writeText(text)
+      },
+      sprintName.value,
+      'sprintName'
+    )
+  })
+
+  copyBackportsButton.addEventListener('click', () => {
+    runFunction(
+      copyBackports,
+      [getTasks, formatTask, getNumber],
+      0,
+      (text) => {
+        navigator.clipboard.writeText(text)
+      },
+      sprintName.value,
+      'sprintName'
+    )
+  })
+
+  copyTitleButton.addEventListener('click', () => {
+    runFunction(
+      copyTitle,
+      [getTasks, formatTask],
+      0,
+      (text) => {
+        navigator.clipboard.writeText(text)
+      },
+      sprintName.value,
+      'sprintName'
+    )
+  })
+
+  copyFeaturesButton.addEventListener('click', () => {
+    runFunction(
+      copyFeatures,
+      [getTasks, formatTask],
+      0,
+      (text) => {
+        navigator.clipboard.writeText(text)
+      },
+      sprintName.value,
+      'sprintName'
+    )
   })
 })

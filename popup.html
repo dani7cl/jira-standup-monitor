@@ -8,12 +8,26 @@
   </head>
 
   <body>
-    <h1>Jira Standup Monitor</h1>
-    <div class="subtitle">Ramondly decide who's next</div>
-    <img src="ramondly.png" />
-    <div id="container">
-      <button id="show-player">Show player</button>
-      <button id="clear">Clear Data</button>
+    <div id="main-view">
+      <h1>Jira Standup Monitor</h1>
+      <div class="subtitle">Ramondly decide who's next</div>
+      <img src="ramondly.png" />
+      <div id="container">
+        <button id="show-player">Show player</button>
+        <button id="clear">Clear Data</button>
+      </div>
+      <button id="show-extractor">Sprint Data Extractor</button>
     </div>
+    <div id="extractor-view">
+      <div class="subtitle">Copy to your clipboard a formatted version of your sprint tasks</div>
+      <span>Sprint Name</span><input id="sprint-name" placeholder="Sprint Name" value="Dynatrace Sprint 238" /> <br /><br />
+      <button id="copy-title">Copy Title</button>
+      <button id="copy-features">Copy Features</button>
+      <button id="copy-backports">Copy Backports</button>
+      <button id="copy-researches">Copy Researches</button>
+
+      <button id="go-back">Go Back</button>
+    </div>
+    <div></div>
   </body>
 </html>
