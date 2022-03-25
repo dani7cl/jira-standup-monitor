@@ -10,6 +10,8 @@ let showPlayerButton,
   copyTitleButton,
   copyResearchesButton,
   copPostButton,
+  copyAllButton,
+  pasteAllButton,
   sprintName
 
 function showPlayerButtonClicked() {
@@ -29,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
   copyFeaturesButton = document.getElementById('copy-features')
   copyResearchesButton = document.getElementById('copy-researches')
   copyPostButton = document.getElementById('copy-post')
-
+  copyAllButton = document.getElementById('copy-all')
+  pasteAllButton = document.getElementById('paste-all')
   sprintName = document.getElementById('sprint-name')
 
   // Main View
@@ -127,5 +130,20 @@ document.addEventListener('DOMContentLoaded', () => {
       sprintName.value,
       'sprintName'
     )
+  })
+
+  copyAllButton.addEventListener('click', () => {
+    runFunction(
+      copyAllDashboardData,
+      [copyTitle, copyFeatures, copyBackports, copyResearches, getNumber, getTasks, formatTask],
+      0,
+      () => {},
+      sprintName.value,
+      'sprintName'
+    )
+  })
+
+  pasteAllButton.addEventListener('click', () => {
+    runFunction(pasteAllDashboardData, [], 0)
   })
 })

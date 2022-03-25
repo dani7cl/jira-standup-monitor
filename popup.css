@@ -55,3 +55,11 @@ button:hover {
 #extractor-view {
   display: none;
 }
+
+#copy-all {
+  background-color: #7532D0;
+}
+
+#paste-all {
+  background-color: #7532D0;
+}
