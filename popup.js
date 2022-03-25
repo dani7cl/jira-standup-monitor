@@ -9,6 +9,7 @@ let showPlayerButton,
   copyFeaturesButton,
   copyTitleButton,
   copyResearchesButton,
+  copPostButton,
   sprintName
 
 function showPlayerButtonClicked() {
@@ -27,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   copyTitleButton = document.getElementById('copy-title')
   copyFeaturesButton = document.getElementById('copy-features')
   copyResearchesButton = document.getElementById('copy-researches')
+  copyPostButton = document.getElementById('copy-post')
+
   sprintName = document.getElementById('sprint-name')
 
   // Main View
@@ -92,6 +95,20 @@ document.addEventListener('DOMContentLoaded', () => {
       [getTasks, formatTask],
       0,
       (text) => {
+        navigator.clipboard.writeText(text)
+      },
+      sprintName.value,
+      'sprintName'
+    )
+  })
+
+  copyPostButton.addEventListener('click', () => {
+    runFunction(
+      copyPost,
+      [getTasks, formatTask, getNumber],
+      0,
+      (text) => {
+        console.log(text)
         navigator.clipboard.writeText(text)
       },
       sprintName.value,
