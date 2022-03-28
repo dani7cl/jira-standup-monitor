@@ -1,5 +1,16 @@
 # CHANGELOG
-## VERSION 2.0 - 16/07/2021
+## VERSION 3.1.0 - 25/03/2022
+- (feature) Extract Http Post Metric command
+- (feature) Copy and paste everything to the dashboard automatically
+
+## VERSION 3.0.0 - 11/03/2022
+- (feature) Sprint Data Extractor
+- (feature) Extract task counts
+- (feature) Extract backports
+- (feature) Extract features
+- (feature) Extract researches
+
+## VERSION 2.0.0 - 16/07/2021
 - (feature) Integrated player on JIRA
 - (feature) Go Back button
 
