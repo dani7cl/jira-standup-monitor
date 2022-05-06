@@ -389,7 +389,7 @@ function copyTitle(sprintName) {
   return title
 }
 
-function copyPost(sprintName) {
+function copyMetricHttpPost(sprintName) {
   const bugKey = 'Bug'
   const researchKey = 'Research'
   const rfaKey = 'Request for Assistance'
@@ -412,7 +412,7 @@ function copyPost(sprintName) {
     return false
   }).length
 
-  let httpPostCmd = `curl --location --request POST 'https://demo.dev.dynatracelabs.com/api/v2/metrics/ingest?api-token='$DEMO_DEV_TOKEN \
+  let httpPostMetric = `curl --location --request POST 'https://demo.dev.dynatracelabs.com/api/v2/metrics/ingest?api-token='$DEMO_DEV_TOKEN \
 --header 'Content-Type: text/plain' \
 --data-raw 'sprint.review,issues="stories",sprint="$sprint" $stories
 sprint.review,issues="bugs",sprint="$sprint" $bugs
@@ -421,15 +421,15 @@ sprint.review,issues="backport",sprint="$sprint" $backports
 sprint.review,issues="research",sprint="$sprint" $researches
 sprint.review,issues="tech tasks",sprint="$sprint" $tasks'`
 
-  httpPostCmd = httpPostCmd.replace(/\$sprint/g, sprintNumber)
-  httpPostCmd = httpPostCmd.replace('$stories', stories)
-  httpPostCmd = httpPostCmd.replace('$researches', researches)
-  httpPostCmd = httpPostCmd.replace('$tasks', tasks)
-  httpPostCmd = httpPostCmd.replace('$rfas', rfas)
-  httpPostCmd = httpPostCmd.replace('$bugs', bugsArray.length)
-  httpPostCmd = httpPostCmd.replace('$backports', backports)
+  httpPostMetric = httpPostMetric.replace(/\$sprint/g, sprintNumber)
+  httpPostMetric = httpPostMetric.replace('$stories', stories)
+  httpPostMetric = httpPostMetric.replace('$researches', researches)
+  httpPostMetric = httpPostMetric.replace('$tasks', tasks)
+  httpPostMetric = httpPostMetric.replace('$rfas', rfas)
+  httpPostMetric = httpPostMetric.replace('$bugs', bugsArray.length)
+  httpPostMetric = httpPostMetric.replace('$backports', backports)
 
-  return httpPostCmd
+  return httpPostMetric
 }
 
 function copyFeatures(sprintName) {
@@ -454,7 +454,7 @@ function copyBackports(sprintName) {
   const sprintNumber = getNumber(sprintName)
   const bugs = getTasks(bugKey, sprintName)
 
-  let backportsText = '## Backports\n\n'
+  let backportsText = '## Backports to PROD\n\n'
 
   bugs.forEach((bug) => {
     const versionsElement = bug.parentElement.querySelector('span[class*="aui-label"]')
@@ -532,4 +532,220 @@ function pasteAllDashboardData() {
     setTimeout(() => addToMarkdown(backports), 6000)
     setTimeout(() => addToMarkdown(researches), 9000)
   })
+}
+
+function copyDashboardHttpPost(sprintName) {
+  let httpPostDashboard = `
+curl --location --request POST 'https://demo.dev.dynatracelabs.com/api/config/v1/dashboards?api-token='$DEMO_DEV_TOKEN \
+--header 'Content-Type: application/json' \
+  -d '{
+  "dashboardMetadata": {
+    "name": "VIZARD Sprint Review $sprint",
+    "shared": false,
+    "owner": "daniel.coll@dynatrace.com",
+    "tags": [
+      "vizard",
+      "Data explorer",
+      "sprint",
+      "explorer",
+      "$sprint"
+    ],
+    "dynamicFilters": {
+      "filters": [
+        "APPLICATION_TAG_KEY:vizardy",
+        "APPLICATION_TAG_KEY:vizard",
+        "PROCESS_GROUP_INSTANCE_TAG_KEY:vizard",
+        "HOST_VIRTUALIZATION_TYPE",
+        "OS_TYPE",
+        "RELATED_CLOUD_APPLICATION",
+        "HOST_MONITORING_MODE",
+        "CUSTOM_DIMENSION:game",
+        "SERVICE_TAG_KEY:vizardy",
+        "APPLICATION_INJECTION_TYPE",
+        "PROCESS_GROUP_TAG_KEY:vizard",
+        "RELATED_NAMESPACE",
+        "SERVICE_TAG_KEY:vizard",
+        "DEPLOYMENT_TYPE",
+        "PROCESS_GROUP_INSTANCE_TAG_KEY:vizardy",
+        "HOST_TAG_KEY:vizardy",
+        "KUBERNETES_CLUSTER",
+        "PROCESS_GROUP_TAG_KEY:vizardy",
+        "SERVICE_TYPE",
+        "DATABASE_VENDOR",
+        "HOST_TAG_KEY:vizard",
+        "PAAS_VENDOR_TYPE"
+      ]
+    },
+    "tilesNameSize": "medium"
+  },
+  "tiles": [
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 342,
+        "left": 38,
+        "width": 380,
+        "height": 38
+      },
+      "tileFilter": {
+        "timeframe": "2022-01-14 14:00 to 2022-01-14 14:03"
+      },
+      "markdown": "With love from VIZARD  [sprint $sprint](https://dev-jira.dynatrace.org/secure/RapidBoard.jspa?rapidView=1077)"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 418,
+        "width": 494,
+        "height": 114
+      },
+      "tileFilter": {},
+      "markdown": "$title"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 380,
+        "left": 38,
+        "width": 380,
+        "height": 190
+      },
+      "tileFilter": {},
+      "markdown": "$backports"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 114,
+        "left": 418,
+        "width": 494,
+        "height": 380
+      },
+      "tileFilter": {},
+      "markdown": "$features"
+    },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 494,
+        "left": 418,
+        "width": 494,
+        "height": 152
+      },
+      "tileFilter": {},
+      "markdown": "$researches"
+    },
+    {
+      "name": "Pie",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {
+        "top": 0,
+        "left": 38,
+        "width": 380,
+        "height": 342
+      },
+      "tileFilter": {},
+      "customName": "Pie",
+      "queries": [
+        {
+          "id": "A",
+          "metric": "sprint.review",
+          "spaceAggregation": "SUM",
+          "timeAggregation": "DEFAULT",
+          "splitBy": [
+            "issues"
+          ],
+          "sortBy": "DESC",
+          "filterBy": {
+            "nestedFilters": [],
+            "criteria": []
+          },
+          "limit": 100,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "PIE_CHART",
+        "global": {
+          "hideLegend": false
+        },
+        "rules": [
+          {
+            "matcher": "A:",
+            "properties": {
+              "color": "DEFAULT"
+            },
+            "seriesOverrides": []
+          }
+        ],
+        "axes": {
+          "xAxis": {
+            "visible": true
+          },
+          "yAxes": []
+        },
+        "heatmapSettings": {
+          "yAxis": "VALUE"
+        },
+        "thresholds": [
+          {
+            "axisTarget": "LEFT",
+            "rules": [
+              {
+                "color": "#7dc540"
+              },
+              {
+                "color": "#f5d30f"
+              },
+              {
+                "color": "#dc172a"
+              }
+            ],
+            "queryId": "",
+            "visible": true
+          }
+        ],
+        "tableSettings": {
+          "isThresholdBackgroundAppliedToCell": false
+        },
+        "graphChartSettings": {
+          "connectNulls": false
+        },
+        "honeycombSettings": {
+          "showHive": true,
+          "showLegend": true,
+          "showLabels": false
+        }
+      },
+      "queriesSettings": {
+        "resolution": ""
+      }
+    }
+  ]
+}'
+`
+  const sprintNumber = getNumber(sprintName)
+  const title = copyTitle(sprintName)
+  const features = copyFeatures(sprintName)
+  const backports = copyBackports(sprintName)
+  const researches = copyResearches(sprintName)
+
+  httpPostDashboard = httpPostDashboard.replace('$title', title.replace(/\n/g, '\\n'))
+  httpPostDashboard = httpPostDashboard.replace('$features', features.replace(/\n/g, '\\n'))
+  httpPostDashboard = httpPostDashboard.replace('$researches', researches.replace(/\n/g, '\\n'))
+  httpPostDashboard = httpPostDashboard.replace('$backports', backports.replace(/\n/g, '\\n'))
+  httpPostDashboard = httpPostDashboard.replace(/\$sprint/g, sprintNumber)
+  return httpPostDashboard
 }

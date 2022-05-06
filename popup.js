@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
   copyTitleButton = document.getElementById('copy-title')
   copyFeaturesButton = document.getElementById('copy-features')
   copyResearchesButton = document.getElementById('copy-researches')
-  copyPostButton = document.getElementById('copy-post')
+  copyMetricHttpPostButton = document.getElementById('copy-metric-http-post')
+  copyDashboardHttpPostButton = document.getElementById('copy-dashboard-http-post')
   copyAllButton = document.getElementById('copy-all')
   pasteAllButton = document.getElementById('paste-all')
   sprintName = document.getElementById('sprint-name')
@@ -105,9 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
     )
   })
 
-  copyPostButton.addEventListener('click', () => {
+  copyMetricHttpPostButton.addEventListener('click', () => {
     runFunction(
-      copyPost,
+      copyMetricHttpPost,
       [getTasks, formatTask, getNumber],
       0,
       (text) => {
@@ -138,6 +139,20 @@ document.addEventListener('DOMContentLoaded', () => {
       [copyTitle, copyFeatures, copyBackports, copyResearches, getNumber, getTasks, formatTask],
       0,
       () => {},
+      sprintName.value,
+      'sprintName'
+    )
+  })
+
+  copyDashboardHttpPostButton.addEventListener('click', () => {
+    runFunction(
+      copyDashboardHttpPost,
+      [copyTitle, copyFeatures, copyBackports, copyResearches, getNumber, getTasks, formatTask],
+      0,
+      (text) => {
+        console.log(text)
+        navigator.clipboard.writeText(text)
+      },
       sprintName.value,
       'sprintName'
     )
