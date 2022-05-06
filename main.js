@@ -342,7 +342,7 @@ function formatTask(taskTypelement) {
   const id = taskTypelement.parentElement.querySelector('a[class*="js-key-link"]').title
   const title = taskTypelement.parentElement.querySelector('div[class*="ghx-summary"]').title
 
-  return `- [[**${id}**]](https://dev-jira.dynatrace.org/browse/APM-346388) ${title}\n\n`
+  return `- [[**${id}**]](https://dev-jira.dynatrace.org/browse/${id}) ${title}\n\n`
 }
 
 function copyTitle(sprintName) {
@@ -433,19 +433,36 @@ sprint.review,issues="tech tasks",sprint="$sprint" $tasks'`
 }
 
 function copyFeatures(sprintName) {
-  const storyKey = 'Story'
+  const featureKey = 'Story'
 
-  const storyEmoji = ''
+  const features = getTasks(featureKey, sprintName)
 
-  const stories = getTasks(storyKey, sprintName)
+  let featuresText = ''
 
-  let storiesText = '## ' + storyEmoji + storyEmoji + storyEmoji + ' Features:\n\n'
+  let epics = {}
 
-  stories.forEach((story) => {
-    storiesText += formatTask(story)
+  features.forEach((feature) => {
+    let epicName = feature.parentElement.querySelector('span[data-epickey]')?.textContent
+
+    if (!epicName) {
+      epicName = 'Other'
+    }
+
+    if (epics[epicName]) {
+      epics[epicName].push(feature)
+    } else {
+      epics[epicName] = [feature]
+    }
   })
 
-  return storiesText
+  Object.keys(epics).forEach((epic) => {
+    featuresText += `## ${epic} \n \n`
+    epics[epic].forEach((feature) => {
+      featuresText += formatTask(feature)
+    })
+  })
+
+  return featuresText
 }
 
 function copyBackports(sprintName) {
@@ -602,7 +619,7 @@ curl --location --request POST 'https://demo.dev.dynatracelabs.com/api/config/v1
         "top": 0,
         "left": 418,
         "width": 494,
-        "height": 114
+        "height": 76
       },
       "tileFilter": {},
       "markdown": "$title"
@@ -625,10 +642,10 @@ curl --location --request POST 'https://demo.dev.dynatracelabs.com/api/config/v1
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 114,
+        "top": 76,
         "left": 418,
         "width": 494,
-        "height": 380
+        "height": 494
       },
       "tileFilter": {},
       "markdown": "$features"
@@ -638,14 +655,26 @@ curl --location --request POST 'https://demo.dev.dynatracelabs.com/api/config/v1
       "tileType": "MARKDOWN",
       "configured": true,
       "bounds": {
-        "top": 494,
-        "left": 418,
-        "width": 494,
+        "top": 0,
+        "left": 912,
+        "width": 380,
         "height": 152
       },
       "tileFilter": {},
       "markdown": "$researches"
     },
+    {
+      "name": "Markdown",
+      "tileType": "MARKDOWN",
+      "configured": true,
+      "bounds": {
+        "top": 152,
+        "left": 912,
+        "width": 380,
+        "height": 76
+      },
+      "tileFilter": {},
+      "markdown": "For [the next sprint](https://dev-jira.dynatrace.org/secure/RapidBoard.jspa?rapidView=1077&view=planning.nodetail&issueLimit=100) we have planned..."},
     {
       "name": "Pie",
       "tileType": "DATA_EXPLORER",

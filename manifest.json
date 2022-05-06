@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Jira Standup Monitor",
     "description": "Ramondly decides who's next on standups",
-    "version": "3.0",
+    "version": "3.2.0",
   
     "browser_action": {
       "default_icon": "ramondly.png",

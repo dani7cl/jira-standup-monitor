@@ -56,10 +56,10 @@ button:hover {
   display: none;
 }
 
-#copy-all {
+#copy-metric-http-post {
   background-color: #7532D0;
 }
 
-#paste-all {
+#copy-dashboard-http-post {
   background-color: #7532D0;
 }

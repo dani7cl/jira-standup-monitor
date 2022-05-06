@@ -1,6 +1,9 @@
 # CHANGELOG
 ## VERSION 3.2.0 - 06/05/2022
 - (feature) Extract Dashboard Http Post command
+- Old actions deprecated
+- Group features into epics
+
 ## VERSION 3.1.0 - 25/03/2022
 - (feature) Extract Http Post Metric command
 - (feature) Copy and paste everything to the dashboard automatically
