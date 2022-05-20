@@ -1,12 +1,15 @@
 # CHANGELOG
+## VERSION 3.2.1 - 20/05/2022
+- (feature) Sprint Data Extractor: Dropdown to select the sprints
+- 
 ## VERSION 3.2.0 - 06/05/2022
-- (feature) Extract Dashboard Http Post command
-- Old actions deprecated
-- Group features into epics
+- (feature) Sprint Data Extractor: Extract Dashboard Http Post command
+- Sprint Data Extractor: Old actions deprecated
+- Sprint Data Extractor: Group features into epics
 
 ## VERSION 3.1.0 - 25/03/2022
-- (feature) Extract Http Post Metric command
-- (feature) Copy and paste everything to the dashboard automatically
+- (feature) Sprint Data Extractor: Extract Http Post Metric command
+- (feature) Sprint Data Extractor: Copy and paste everything to the dashboard automatically
 
 ## VERSION 3.0.0 - 11/03/2022
 - (feature) Sprint Data Extractor

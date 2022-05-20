@@ -778,3 +778,7 @@ curl --location --request POST 'https://demo.dev.dynatracelabs.com/api/config/v1
   httpPostDashboard = httpPostDashboard.replace(/\$sprint/g, sprintNumber)
   return httpPostDashboard
 }
+
+function getSprintNames() {
+  return Array.prototype.slice.call(document.querySelectorAll('span[data-fieldname="sprintName"]')).map((element) => element.textContent)
+}

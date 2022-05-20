@@ -24,26 +24,29 @@ That's it, you are ready to use it :)
 <img src="images/highlights.png" alt="highlights" height="400"/>
 
 ## User Guide Sprint Data Extractor
- - Go to the https://dev-jira.dynatrace.org Backlog
- - Identify the title of the sprint you want to extract the data(such as Dynatrace Sprint 239)
+ - Genereate a token on the Token Viewer section of the Debug UI on demo.dev
+ - Open your terminal(mac, linux or git bash) and set your token variable that will be used later.
+   - `export DEMO_DEV_TOKEN=WhateverValidTokenHash`
+ - Go to the https://dev-jira.dynatrace.org Backlog.
+ - Verify there is no filter applied(name, team, etc).
+ - Identify the title of the sprint you want to extract the data, such as Dynatrace Sprint 243.
  - Open the extension and click on Sprint Data Extractor
- - Type the sprint title on the input and click any of the buttons to each functionality
-   - Copy title => Summary of the counts of each task type*
-   - Copy features => Features splitted by epic*
-   - Copy researches*
-   - Copy backports => Backports to production*
-   - Copy Metric HTTP Post => curl command to generate the data of the pie chart summary
-     - Before executing that command, you will need to set your token variable
-       - `export DEMO_DEV_TOKEN=WhateverValidTokenHash`
-            <img src="images/pie.png" alt="pie-chart" width="150"/>
+  <p align="center">
+     <img src="images/sprint-data-extractor.png" alt="sprint-data-extractor" width="150"/>
+  </p>
+  
+ - Select the sprint you want on the dropdown
+ - Now let's focus on the two main functions:
+   - Copy Dashboard HTTP Post => Clicking on this button copies a curl command to generate the data of the dashboard, you just need to paste it to the same terminal you set your DEMO_DEV_TOKEN variable and the Dashboard will be created
+     - Afterwards, you can go to the Dashboards list of Demo Dev and find the Dashboard with the name you got on the output of the command. Dashboard will look similar to this one
+    <img src="images/dashboard-without-data.png" alt="dashboard-without-data" width="400"/>
+    Now you need to fill the data of the pie chart visualization
+   - Copy Metric HTTP Post => Clicking on this button copies a curl command to generate the data of the pie chart of your dashboard, you just need to paste it to the same terminal you set your DEMO_DEV_TOKEN variable
+  <p align="center">
+      <img src="images/pie.png" alt="pie-chart" width="150"/>
+  </p>
 
-   - Copy All Dashboard => You will copy at once all the title, features, researches and backports
-   - Paste All Dashboard => You can go to the demo.dev dashboard and paste the dashboard you just copied
-<img src="images/paste-dashboard.gif" alt="paste-dashboard" width="600"/>
-
-
-*Every text is already formatted
-
+That's it! You have the base of your Dashboard (Title, Tags, Pie, Summary, Backports to PROD, Researches, Features divided by epic and links to the JIRA and the sprints). Now you can iterate over it if you want to make it prettier :)
 
 
 ## CHANGELOG

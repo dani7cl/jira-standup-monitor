@@ -12,7 +12,7 @@ let showPlayerButton,
   copPostButton,
   copyAllButton,
   pasteAllButton,
-  sprintName
+  sprintNameSelect
 
 function showPlayerButtonClicked() {
   runFunction(showPlayer)
@@ -34,7 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
   copyDashboardHttpPostButton = document.getElementById('copy-dashboard-http-post')
   copyAllButton = document.getElementById('copy-all')
   pasteAllButton = document.getElementById('paste-all')
-  sprintName = document.getElementById('sprint-name')
+  sprintNameSelect = document.getElementById('sprint-name')
+
+  runFunction(getSprintNames, [], 0, (result) => {
+    result[0].forEach((name) => {
+      console.log(name)
+      const opt = document.createElement('option')
+      opt.value = name
+      opt.innerHTML = name
+      sprintNameSelect.appendChild(opt)
+    })
+  })
 
   // Main View
   showPlayerButton.addEventListener('click', () => {
@@ -75,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (text) => {
         navigator.clipboard.writeText(text)
       },
-      sprintName.value,
+      sprintNameSelect.value,
       'sprintName'
     )
   })
@@ -88,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (text) => {
         navigator.clipboard.writeText(text)
       },
-      sprintName.value,
+      sprintNameSelect.value,
       'sprintName'
     )
   })
@@ -101,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (text) => {
         navigator.clipboard.writeText(text)
       },
-      sprintName.value,
+      sprintNameSelect.value,
       'sprintName'
     )
   })
@@ -115,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(text)
         navigator.clipboard.writeText(text)
       },
-      sprintName.value,
+      sprintNameSelect.value,
       'sprintName'
     )
   })
@@ -128,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (text) => {
         navigator.clipboard.writeText(text)
       },
-      sprintName.value,
+      sprintNameSelect.value,
       'sprintName'
     )
   })
@@ -139,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
       [copyTitle, copyFeatures, copyBackports, copyResearches, getNumber, getTasks, formatTask],
       0,
       () => {},
-      sprintName.value,
+      sprintNameSelect.value,
       'sprintName'
     )
   })
@@ -153,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(text)
         navigator.clipboard.writeText(text)
       },
-      sprintName.value,
+      sprintNameSelect.value,
       'sprintName'
     )
   })
