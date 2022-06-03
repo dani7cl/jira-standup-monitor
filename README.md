@@ -29,6 +29,7 @@ That's it, you are ready to use it :)
    - `export DEMO_DEV_TOKEN=WhateverValidTokenHash`
  - Go to the https://dev-jira.dynatrace.org Backlog.
  - Verify there is no filter applied(name, team, etc).
+ - Ensure there are no ongoing or irrelevant tasks on the sprint, otherwise they will be counted in the final amount.
  - Identify the title of the sprint you want to extract the data, such as Dynatrace Sprint 243.
  - Open the extension and click on Sprint Data Extractor
   <p align="center">
@@ -39,8 +40,9 @@ That's it, you are ready to use it :)
  - Now let's focus on the two main functions:
    - Copy Dashboard HTTP Post => Clicking on this button copies a curl command to generate the data of the dashboard, you just need to paste it to the same terminal you set your DEMO_DEV_TOKEN variable and the Dashboard will be created
      - Afterwards, you can go to the Dashboards list of Demo Dev and find the Dashboard with the name you got on the output of the command. Dashboard will look similar to this one
-    <img src="images/dashboard-without-data.png" alt="dashboard-without-data" width="400"/>
-    Now you need to fill the data of the pie chart visualization
+    <img src="images/dashboard-without-data.png" alt="dashboard-without-data" width="400"/><br>
+    Now you just need to fill the data of the pie chart visualization
+    <br>
    - Copy Metric HTTP Post => Clicking on this button copies a curl command to generate the data of the pie chart of your dashboard, you just need to paste it to the same terminal you set your DEMO_DEV_TOKEN variable
   <p align="center">
       <img src="images/pie.png" alt="pie-chart" width="150"/>
